@@ -1,0 +1,57 @@
+[System]
+Name='Завдання 2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=15
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temperature'
+Range=[0 40]
+NumMFs=5
+MF1='дуже_холодна':'trimf',[0 5 10]
+MF2='холодна':'trimf',[8 12 18.5]
+MF3='норма':'trimf',[17 20 26]
+MF4='тепла':'trimf',[20 25 30]
+MF5='дуже_тепла':'trimf',[27 40 50]
+
+[Input2]
+Name='TempChangeRate'
+Range=[-2 2]
+NumMFs=3
+MF1='від’ємна':'trimf',[-2 -1 0]
+MF2='нульова':'trimf',[-0.5 0 0.5]
+MF3='додатна':'trimf',[0 1 2]
+
+[Output1]
+Name='ACControl'
+Range=[-90 90]
+NumMFs=5
+MF1='великий_вліво':'trimf',[-90 -60 -30]
+MF2='невеликий_вліво':'trimf',[-40 -20 0]
+MF3='нейтральне_положення':'trimf',[-5 0 5]
+MF4='невеликий_вправо':'trimf',[0 20 40]
+MF5='великий_вправо':'trimf',[30 60 90]
+
+[Rules]
+5 3, 1 (1) : 1
+5 1, 2 (1) : 1
+4 3, 1 (1) : 1
+4 1, 3 (1) : 1
+1 1, 5 (1) : 1
+1 3, 4 (1) : 1
+2 1, 1 (1) : 1
+2 3, 3 (1) : 1
+5 0, 1 (1) : 1
+4 0, 2 (1) : 1
+1 0, 5 (1) : 1
+2 0, 4 (1) : 1
+3 3, 2 (1) : 1
+3 1, 4 (1) : 1
+3 0, 3 (1) : 1

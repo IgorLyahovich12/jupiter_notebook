@@ -1,0 +1,67 @@
+[System]
+Name='Untitled2'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=11
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='WaterTemperature'
+Range=[0 100]
+NumMFs=5
+MF1='Холодна':'trimf',[0 11 22]
+MF2='Прохолодна':'trimf',[20 27 36]
+MF3='Тепла':'trimf',[30 36.66 42]
+MF4='Не_дуже_гаряча':'trimf',[37 44 47]
+MF5='Гаряча':'trimf',[45 100 100]
+
+[Input2]
+Name='WaterFlow'
+Range=[0 10]
+NumMFs=3
+MF1='Слабий':'trimf',[0 0 3]
+MF2='Не_дуже_сильний':'trimf',[2 5 8]
+MF3='Сильний':'trimf',[7 10 10]
+
+[Output1]
+Name='HotValveAngle'
+Range=[-90 90]
+NumMFs=7
+MF1='Великий_вліво':'trimf',[-90 -70 -50]
+MF2='Середній_вліво':'trimf',[-70 -50 -30]
+MF3='Невеликий_вліво':'trimf',[-50 -30 -10]
+MF4='Нейтральний':'trimf',[-10 0 10]
+MF5='Невеликий_вправо':'trimf',[10 30 50]
+MF6='Середній_вправо':'trimf',[30 50 70]
+MF7='Великий_вправо':'trimf',[50 70 90]
+
+[Output2]
+Name='ColdValveAngle'
+Range=[-90 90]
+NumMFs=7
+MF1='Великий_вліво':'trimf',[-90 -70 -50]
+MF2='Середній_вліво':'trimf',[-70 -50 -30]
+MF3='Невеликий_вліво':'trimf',[-50 -30 -10]
+MF4='Нейтральний':'trimf',[-10 0 10]
+MF5='Невеликий_вправо':'trimf',[10 30 50]
+MF6='Середній_вправо':'trimf',[30 50 70]
+MF7='Великий_вправо':'trimf',[50 70 90]
+
+[Rules]
+5 3, 2 6 (1) : 1
+5 2, 0 6 (1) : 1
+4 3, 3 0 (1) : 1
+4 1, 5 5 (1) : 1
+3 2, 4 4 (1) : 1
+2 3, 6 2 (1) : 1
+2 2, 6 3 (1) : 1
+1 1, 7 0 (1) : 1
+1 3, 2 6 (1) : 1
+3 3, 3 3 (1) : 1
+3 1, 5 5 (1) : 1
